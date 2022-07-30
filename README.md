@@ -15,3 +15,21 @@ git clone https://github.com/BarakIL/spike.git
 ```bash
 python3 setup.py spike/install
 ```
+
+# Example Get All Domain in Iran
+
+```python3
+from spike import ScanIP
+import socket
+
+def resolver(ip):
+    try:
+        host = socket.gethostbyaddr(ip)
+        print(f'{ip} ->> {host[0]}')
+    except:
+        pass
+if __name__ == "__main__":
+    s = ScanIP("ir")
+    s.scan(resolver)
+    
+```
