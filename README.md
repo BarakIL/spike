@@ -1,10 +1,14 @@
 # Spike Easy Scanner
 
 
-## spike is fast scanner can help your scan all range ip
-## by only country code wiyh multi-threading
+## spike is fast scanner 
 
-# install 
+<sub>Spike can help you scan all IP ranges by country code only with multithreading and you can write the exploit yourself on an existing packet to scan with it!</sub>
+![This is an logo](https://cdn.dribbble.com/users/1787323/screenshots/9791845/media/81210e0150e626aa9678b53fc46bffa7.png?compress=1&resize=400x300)
+
+***Look on scripts in examples***
+
+# Downlaod and install Spike Project
 
 ### Downlaod Project
 ```bash
