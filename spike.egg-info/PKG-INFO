@@ -1,0 +1,31 @@
+Metadata-Version: 1.1
+Name: spike
+Version: 0.0.1
+Summary: Spike Powerful Ranger Scanner
+Home-page: UNKNOWN
+Author: ClickCyber
+Author-email: UNKNOWN
+License: MIT
+Description: # Spike Easy Scanner
+        
+        
+        ## spike is fast scanner can help your scan all range ip
+        ## by only country code wiyh multi-threading
+        
+        
+        
+        Change Log
+        ===========
+        
+        0.0.1 (01/08/22)
+        -------------------
+        - First Release
+        
+        
+Keywords: Spike
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3

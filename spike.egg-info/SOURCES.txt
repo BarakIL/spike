@@ -1,0 +1,8 @@
+README.md
+setup.py
+spike/__init__.py
+spike.egg-info/PKG-INFO
+spike.egg-info/SOURCES.txt
+spike.egg-info/dependency_links.txt
+spike.egg-info/requires.txt
+spike.egg-info/top_level.txt
