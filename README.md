@@ -13,7 +13,7 @@ git clone https://github.com/BarakIL/spike.git
 
 ### install Project
 ```bash
-python3 setup.py spike/install
+python3 spike/setup.py install
 ```
 
 # Example Get All Domain in Iran
