@@ -14,7 +14,7 @@ setup(
   description='Spike Powerful Ranger Scanner',
   long_description=open('README.md').read() + '\n\n' + open('CHANGELOG.txt').read(),
   url='',  
-  author='ClickCyber',
+  author='BarakIL',
   author_email='',
   license='MIT', 
   classifiers=classifiers,
