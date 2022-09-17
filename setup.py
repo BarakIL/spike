@@ -20,5 +20,5 @@ setup(
   classifiers=classifiers,
   keywords='Spike', 
   packages=find_packages(),
-  install_requires=['requests==2.28.1 '] 
+  install_requires=['requests==2.28.1', 'progressbar2==4.0.0'] 
 )
