@@ -1,10 +1,22 @@
 from itertools import product
-import threading, time
-from requests import get
+from concurrent.futures import ThreadPoolExecutor
+import time
+import requests
 
+import progressbar
+  
+
+widgets = [' [',
+         progressbar.Timer(format= 'elapsed time: %(elapsed)s'),
+         '] ',
+           progressbar.Bar('*'),' (',
+           progressbar.ETA(), ') ',
+          ]
+  
+requests.packages.urllib3.disable_warnings()
 
 class ScanIP(object):
-    def __init__(self, tld, verbose=True, thredas=300, delay_threads=0.1) -> None:
+    def __init__(self, tld, verbose=True, thredas=150, delay_threads=0) -> None:
         """
         from spike import ScanIP
 
@@ -16,6 +28,7 @@ class ScanIP(object):
         self.delay_threads = delay_threads
         self.verbose = verbose
         self.thredas = thredas
+        self.executor = ThreadPoolExecutor(max_workers=self.thredas)
         self.tld = tld.upper()
         self.Pthreds = list()
     def table_ips(self, TableRange):
@@ -35,27 +48,23 @@ class ScanIP(object):
         def exploit(ip):
             pass # todo code exploit
         spkie.scan(do_it=exploit)
+        requests.exceptions.ConnectionError
         """
-        response = get(f'https://cdn-lite.ip2location.com/datasets/{self.tld}.json')
+        response = requests.get(f'https://cdn-lite.ip2location.com/datasets/{self.tld}.json', verify=False)
         TableIP = [(d[1], d[0]) for d in response.json()["data"]]
-        for table in TableIP:
-            for ip in self.table_ips(table):
+        length_tables = len(TableIP)
+        for loop, table in enumerate(TableIP):
+            range_ip = self.table_ips(table)
+            if self.verbose:
+                print(f"  {loop}/{length_tables}  scan range from {table[1]} to {table[0]}  ")
+            bar = progressbar.ProgressBar(max_value=len(range_ip), widgets=widgets).start()
+            for Secloop, ip in enumerate(range_ip):
                 try:
                     if self.verbose:
-                        print(f'[*] scan ->> {ip}', end="\r")
-                    if type(self.thredas) == int:
-                        if threading.active_count() > self.thredas:
-                            time.sleep(self.delay_threads)
-                    t = threading.Thread(target=do_it, args=(ip, ))
-                    self.Pthreds.append(t)
-                    t.start()
+                        bar.update(Secloop)
+                    self.executor.submit(do_it, ip)
+                    time.sleep(self.delay_threads)
                 except RuntimeError:
                     print("[#] your resource threds is over use limit threds or delay per thread")
                 except KeyboardInterrupt:
                     quit("closed the scanner")
-            for t in self.Pthreds:
-                t.join()
-                
-
-
-
